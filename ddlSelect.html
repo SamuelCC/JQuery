@@ -1,0 +1,60 @@
+<HTML>
+<head>
+    <script src="jquery-1.8.3.js"></script>
+</head>
+<body>
+
+		<select id="ddlTest">
+			<option value="V1">Option1</option>
+			<option value="V2">Option2</option>
+			<option value="V3" selected>Option3</option>		
+		</select>
+		<button type="button" id="btnClear" name="btnClear" onclick="onclick_btnClear()">Clear</button>
+</body>
+</HTML>
+ 
+<script>
+function onclick_btnClear()
+{
+	console.log("onclick_btnClear.IN");
+	let ddlTest = $("#ddlTest");
+	
+	//取值
+	//let GetValue = ddlTest.val();
+	let GetValue = ddlTest.find(":selected").val();
+	
+	//取Select選擇的Text
+	//let GetText=ddlTest.find("option:selected").text();  
+	let GetText=ddlTest.find(":selected").text(); 
+	//獲取Select選擇的索引值
+	let GetIndex=ddlTest.get(0).selectedIndex;  
+	//獲取option總數量
+	let OptionCount=$("#ddlTest option").length;  
+
+	console.log("GetValue:"+GetValue+", GetText:"+GetText+", GetIndex:"
+				+GetText+", OptionCount:"+OptionCount);
+
+
+	//clear
+	ddlTest.empty();
+	
+	//add dll option
+	//let o = new Option("option text", "value");
+	//method1
+	let o = new Option("Update1", "1");
+	ddlTest.append(o);
+	//metho2
+	ddlTest.append("<option value='2'>Update2</option>");
+	ddlTest.append("<option value='3'>Update3</option>");
+	ddlTest.append("<option value='4'>Update4</option>");
+	ddlTest.append("<option value='5'>Update5</option>");
+	//set value
+	ddlTest.val('2');
+
+	//Get count of option
+	OptionCount=$("#ddlTest option").length;  
+	console.log("OptionCount:"+OptionCount);
+	
+	console.log("onclick_btnClear.OUT");	
+}
+</script>
